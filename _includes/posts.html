@@ -1,0 +1,70 @@
+<section id="posts" class="pt-5">
+  <div class="container">
+  	<div class="card-columns">
+  	{% for post in site.posts %}
+  		{% if post.tags contains 'Quote' %}
+  			<div class="card mt-2 p-3 text-white bg-dark">
+  				<blockquote class="blockquote mb-0">
+  				<p>
+  					{% if post.quote%}
+  						{{post.quote}}
+  					{% endif %}
+  				</p>
+  					<footer class="blockquote-footer">
+        				<small class="text-muted">
+          					<cite title="Source Title">{{post.author}}</cite>
+       					 </small>
+      				</footer>
+   			 	</blockquote>
+ 		 	</div>
+  				
+  		
+  		{% endif %}
+  		
+  		{% if post.tags contains 'Slidedeck' %}
+  		  <div class="card mt-2">
+  			<div class="card-body">
+  				<h4 class="card-title stretched-link"><a href="{{ post.url | prepend: site.basurl}}">{{post.title}}</a></h5>
+  					<p class="card-text">
+  					{% if post.description%}
+  						{{post.description}}
+  					{% else %}
+  						{{ post.excerpt }}
+  					{% endif %}
+  					</p>
+  					
+  				</div>
+  			</div>
+  		{% endif %}
+  		
+  		{% if post.tags contains 'Memes' %}
+  		  <div class="card">
+   			 <img src="..." class="card-img-top" alt="...">
+ 		 </div>
+  		{% endif %}
+  		
+  		{% if post.tags contains 'Blog' %}
+  			<div class="card mt-2">
+  				<div class="card-body">
+  					<h4 class="card-title"><a href="{{ post.url | prepend: site.basurl}}">{{post.title}}</a></h5>
+  					<p class="card-text">
+  					{% if post.description%}
+  						{{post.description}}
+  					{% else %}
+  						{{ post.excerpt }}
+  					{% endif %}
+  					
+  					</p>
+  					<a href="{{ post.url | prepend: site.basurl}}" class="btn btn-primary stretched-link">Go somewhere</a>
+  					
+  				</div>
+  			</div>
+  		
+  		{% endif %}
+
+  		
+  		{% endfor %}
+  	</div>
+  	
+  </div>
+</section>
